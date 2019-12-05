@@ -80,7 +80,7 @@ optInSlowPeriod:(From 2 to 100000)
 Number of period for the slow MA
 
 */
-func AdOsc(high, low, close, volume []float64, fastPeriod, slowPeriod int32) []float64 {
+func AdOsc(high, low, close, volume []float64, fastPeriod, slowPeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -103,7 +103,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Adx(high, low, close []float64, timePeriod int32) []float64 {
+func Adx(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -126,7 +126,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Adxr(high, low, close []float64, timePeriod int32) []float64 {
+func Adxr(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -157,7 +157,7 @@ optInMAType:
 Type of Moving Average
 
 */
-func Apo(real []float64, fastPeriod, slowPeriod, mAType int32) []float64 {
+func Apo(real []float64, fastPeriod, slowPeriod, mAType int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -180,7 +180,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func AroOn(high, low []float64, timePeriod int32) ([]float64, []float64) {
+func AroOn(high, low []float64, timePeriod int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outAroonDown := make([]float64, len(high))
@@ -204,7 +204,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func AroOnOsc(high, low []float64, timePeriod int32) []float64 {
+func AroOnOsc(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -257,7 +257,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Atr(high, low, close []float64, timePeriod int32) []float64 {
+func Atr(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -307,7 +307,7 @@ optInMAType:
 Type of Moving Average
 
 */
-func BBands(real []float64, timePeriod int32, nbDevUp, nbDevDn float64, mAType int32) ([]float64, []float64, []float64) {
+func BBands(real []float64, timePeriod int, nbDevUp, nbDevDn float64, mAType int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outRealUpperBand := make([]float64, len(real))
@@ -332,7 +332,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Beta(real0, real1 []float64, timePeriod int32) []float64 {
+func Beta(real0, real1 []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real0))
@@ -370,7 +370,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Cci(high, low, close []float64, timePeriod int32) []float64 {
+func Cci(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -385,10 +385,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl2Crows(open, high, low, close []float64) []int32 {
+func Cdl2Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL2CROWS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -400,10 +400,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3BlackCrows(open, high, low, close []float64) []int32 {
+func Cdl3BlackCrows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3BLACKCROWS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -415,10 +415,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3Inside(open, high, low, close []float64) []int32 {
+func Cdl3Inside(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3INSIDE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -430,10 +430,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3LineStrike(open, high, low, close []float64) []int32 {
+func Cdl3LineStrike(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3LINESTRIKE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -445,10 +445,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3Outside(open, high, low, close []float64) []int32 {
+func Cdl3Outside(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3OUTSIDE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -460,10 +460,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3StarsinSouth(open, high, low, close []float64) []int32 {
+func Cdl3StarsinSouth(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3STARSINSOUTH(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -475,10 +475,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func Cdl3WhiteSoldiers(open, high, low, close []float64) []int32 {
+func Cdl3WhiteSoldiers(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDL3WHITESOLDIERS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -498,10 +498,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlAbandonedBaby(open, high, low, close []float64, penetration float64) []int32 {
+func CdlAbandonedBaby(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLABANDONEDBABY(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -513,10 +513,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlAdvanceBlock(open, high, low, close []float64) []int32 {
+func CdlAdvanceBlock(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLADVANCEBLOCK(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -528,10 +528,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlBelthold(open, high, low, close []float64) []int32 {
+func CdlBelthold(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLBELTHOLD(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -543,10 +543,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlBreakaway(open, high, low, close []float64) []int32 {
+func CdlBreakaway(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLBREAKAWAY(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -558,10 +558,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlClosingMarubozu(open, high, low, close []float64) []int32 {
+func CdlClosingMarubozu(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLCLOSINGMARUBOZU(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -573,10 +573,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlConcealBabySwall(open, high, low, close []float64) []int32 {
+func CdlConcealBabySwall(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLCONCEALBABYSWALL(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -588,10 +588,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlCounterattack(open, high, low, close []float64) []int32 {
+func CdlCounterattack(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLCOUNTERATTACK(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -611,10 +611,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlDarkCloudCover(open, high, low, close []float64, penetration float64) []int32 {
+func CdlDarkCloudCover(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLDARKCLOUDCOVER(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -626,10 +626,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlDoji(open, high, low, close []float64) []int32 {
+func CdlDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLDOJI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -641,10 +641,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlDojiStar(open, high, low, close []float64) []int32 {
+func CdlDojiStar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLDOJISTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -656,10 +656,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlDragonflyDoji(open, high, low, close []float64) []int32 {
+func CdlDragonflyDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLDRAGONFLYDOJI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -671,10 +671,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlEngulfing(open, high, low, close []float64) []int32 {
+func CdlEngulfing(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLENGULFING(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -694,10 +694,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlEveningDojiStar(open, high, low, close []float64, penetration float64) []int32 {
+func CdlEveningDojiStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLEVENINGDOJISTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -717,10 +717,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlEveningStar(open, high, low, close []float64, penetration float64) []int32 {
+func CdlEveningStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLEVENINGSTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -732,10 +732,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlGapSidesideWhite(open, high, low, close []float64) []int32 {
+func CdlGapSidesideWhite(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLGAPSIDESIDEWHITE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -747,10 +747,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlGravestoneDoji(open, high, low, close []float64) []int32 {
+func CdlGravestoneDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLGRAVESTONEDOJI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -762,10 +762,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHammer(open, high, low, close []float64) []int32 {
+func CdlHammer(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHAMMER(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -777,10 +777,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHangingMan(open, high, low, close []float64) []int32 {
+func CdlHangingMan(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHANGINGMAN(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -792,10 +792,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHarami(open, high, low, close []float64) []int32 {
+func CdlHarami(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHARAMI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -807,10 +807,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHaramiCross(open, high, low, close []float64) []int32 {
+func CdlHaramiCross(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHARAMICROSS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -822,10 +822,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHighWave(open, high, low, close []float64) []int32 {
+func CdlHighWave(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHIGHWAVE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -837,10 +837,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHikkake(open, high, low, close []float64) []int32 {
+func CdlHikkake(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHIKKAKE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -852,10 +852,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHikkakeMod(open, high, low, close []float64) []int32 {
+func CdlHikkakeMod(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHIKKAKEMOD(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -867,10 +867,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlHomingPigeon(open, high, low, close []float64) []int32 {
+func CdlHomingPigeon(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLHOMINGPIGEON(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -882,10 +882,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlIdentical3Crows(open, high, low, close []float64) []int32 {
+func CdlIdentical3Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLIDENTICAL3CROWS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -897,10 +897,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlInNeck(open, high, low, close []float64) []int32 {
+func CdlInNeck(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLINNECK(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -912,10 +912,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlInvertedHammer(open, high, low, close []float64) []int32 {
+func CdlInvertedHammer(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLINVERTEDHAMMER(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -927,10 +927,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlKicking(open, high, low, close []float64) []int32 {
+func CdlKicking(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLKICKING(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -942,10 +942,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlKickingByLength(open, high, low, close []float64) []int32 {
+func CdlKickingByLength(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLKICKINGBYLENGTH(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -957,10 +957,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlLadderBottom(open, high, low, close []float64) []int32 {
+func CdlLadderBottom(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLLADDERBOTTOM(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -972,10 +972,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlLongLeggedDoji(open, high, low, close []float64) []int32 {
+func CdlLongLeggedDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLLONGLEGGEDDOJI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -987,10 +987,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlLongLine(open, high, low, close []float64) []int32 {
+func CdlLongLine(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLLONGLINE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1002,10 +1002,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlMarubozu(open, high, low, close []float64) []int32 {
+func CdlMarubozu(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLMARUBOZU(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1017,10 +1017,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlMatchingLow(open, high, low, close []float64) []int32 {
+func CdlMatchingLow(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLMATCHINGLOW(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1040,10 +1040,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlMatHold(open, high, low, close []float64, penetration float64) []int32 {
+func CdlMatHold(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLMATHOLD(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1063,10 +1063,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlMorningDojiStar(open, high, low, close []float64, penetration float64) []int32 {
+func CdlMorningDojiStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLMORNINGDOJISTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1086,10 +1086,10 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func CdlMorningStar(open, high, low, close []float64, penetration float64) []int32 {
+func CdlMorningStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLMORNINGSTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), C.double(penetration), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1101,10 +1101,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlOnNeck(open, high, low, close []float64) []int32 {
+func CdlOnNeck(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLONNECK(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1116,10 +1116,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlPiercing(open, high, low, close []float64) []int32 {
+func CdlPiercing(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLPIERCING(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1131,10 +1131,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlRickshawMan(open, high, low, close []float64) []int32 {
+func CdlRickshawMan(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLRICKSHAWMAN(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1146,10 +1146,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlRiseFall3Methods(open, high, low, close []float64) []int32 {
+func CdlRiseFall3Methods(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLRISEFALL3METHODS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1161,10 +1161,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlSeparatingLines(open, high, low, close []float64) []int32 {
+func CdlSeparatingLines(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSEPARATINGLINES(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1176,10 +1176,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlShootingStar(open, high, low, close []float64) []int32 {
+func CdlShootingStar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSHOOTINGSTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1191,10 +1191,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlShortLine(open, high, low, close []float64) []int32 {
+func CdlShortLine(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSHORTLINE(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1206,10 +1206,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlSpinningTop(open, high, low, close []float64) []int32 {
+func CdlSpinningTop(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSPINNINGTOP(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1221,10 +1221,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlStalledPattern(open, high, low, close []float64) []int32 {
+func CdlStalledPattern(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSTALLEDPATTERN(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1236,10 +1236,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlStickSandwich(open, high, low, close []float64) []int32 {
+func CdlStickSandwich(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLSTICKSANDWICH(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1251,10 +1251,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlTakuri(open, high, low, close []float64) []int32 {
+func CdlTakuri(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLTAKURI(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1266,10 +1266,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlTasukiGap(open, high, low, close []float64) []int32 {
+func CdlTasukiGap(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLTASUKIGAP(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1281,10 +1281,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlThrusting(open, high, low, close []float64) []int32 {
+func CdlThrusting(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLTHRUSTING(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1296,10 +1296,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlTristar(open, high, low, close []float64) []int32 {
+func CdlTristar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLTRISTAR(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1311,10 +1311,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlUnique3River(open, high, low, close []float64) []int32 {
+func CdlUnique3River(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLUNIQUE3RIVER(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1326,10 +1326,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlUpsideGap2Crows(open, high, low, close []float64) []int32 {
+func CdlUpsideGap2Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLUPSIDEGAP2CROWS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1341,10 +1341,10 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlxSideGap3Methods(open, high, low, close []float64) []int32 {
+func CdlxSideGap3Methods(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(open))
+	outInteger := make([]int, len(open))
 	C.TA_CDLXSIDEGAP3METHODS(0, C.int(len(open)-1), (*C.double)(unsafe.Pointer(&open[0])), (*C.double)(unsafe.Pointer(&high[0])), (*C.double)(unsafe.Pointer(&low[0])), (*C.double)(unsafe.Pointer(&close[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1379,7 +1379,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Cmo(real []float64, timePeriod int32) []float64 {
+func Cmo(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1402,7 +1402,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Correl(real0, real1 []float64, timePeriod int32) []float64 {
+func Correl(real0, real1 []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real0))
@@ -1455,7 +1455,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Dema(real []float64, timePeriod int32) []float64 {
+func Dema(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1493,7 +1493,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Dx(high, low, close []float64, timePeriod int32) []float64 {
+func Dx(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -1516,7 +1516,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Ema(real []float64, timePeriod int32) []float64 {
+func Ema(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1638,10 +1638,10 @@ Input = double
 Output = int
 
 */
-func HtTrendMode(real []float64) []int32 {
+func HtTrendMode(real []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(real))
+	outInteger := make([]int, len(real))
 	C.TA_HT_TRENDMODE(0, C.int(len(real)-1), (*C.double)(unsafe.Pointer(&real[0])), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -1661,7 +1661,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Kama(real []float64, timePeriod int32) []float64 {
+func Kama(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1684,7 +1684,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearReg(real []float64, timePeriod int32) []float64 {
+func LinearReg(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1707,7 +1707,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearRegAngle(real []float64, timePeriod int32) []float64 {
+func LinearRegAngle(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1730,7 +1730,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearRegIntercept(real []float64, timePeriod int32) []float64 {
+func LinearRegIntercept(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1753,7 +1753,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearRegSlope(real []float64, timePeriod int32) []float64 {
+func LinearRegSlope(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1810,7 +1810,7 @@ optInMaType:
 Type of Moving Average
 
 */
-func Ma(real []float64, timePeriod, mAType int32) []float64 {
+func Ma(real []float64, timePeriod, mAType int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1841,7 +1841,7 @@ optInSignalPeriod:(From 1 to 100000)
 Smoothing for the signal line (nb of period)
 
 */
-func Macd(real []float64, fastPeriod, slowPeriod, signalPeriod int32) ([]float64, []float64, []float64) {
+func Macd(real []float64, fastPeriod, slowPeriod, signalPeriod int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMACD := make([]float64, len(real))
@@ -1886,7 +1886,7 @@ optInSignalMAType:
 Type of Moving Average for signal line
 
 */
-func MacdExt(real []float64, fastPeriod, fastMAType, slowPeriod, slowMAType, signalPeriod, signalMAType int32) ([]float64, []float64, []float64) {
+func MacdExt(real []float64, fastPeriod, fastMAType, slowPeriod, slowMAType, signalPeriod, signalMAType int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMACD := make([]float64, len(real))
@@ -1911,7 +1911,7 @@ optInSignalPeriod:(From 1 to 100000)
 Smoothing for the signal line (nb of period)
 
 */
-func MacdFix(real []float64, signalPeriod int32) ([]float64, []float64, []float64) {
+func MacdFix(real []float64, signalPeriod int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMACD := make([]float64, len(real))
@@ -1972,7 +1972,7 @@ optInMAType:
 Type of Moving Average
 
 */
-func Mavp(real, periods []float64, minPeriod, maxPeriod, mAType int32) []float64 {
+func Mavp(real, periods []float64, minPeriod, maxPeriod, mAType int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1995,7 +1995,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Max(real []float64, timePeriod int32) []float64 {
+func Max(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2018,10 +2018,10 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MaxIndex(real []float64, timePeriod int32) []int32 {
+func MaxIndex(real []float64, timePeriod int) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(real))
+	outInteger := make([]int, len(real))
 	C.TA_MAXINDEX(0, C.int(len(real)-1), (*C.double)(unsafe.Pointer(&real[0])), C.int(timePeriod), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -2056,7 +2056,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Mfi(high, low, close, volume []float64, timePeriod int32) []float64 {
+func Mfi(high, low, close, volume []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2079,7 +2079,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MidPoint(real []float64, timePeriod int32) []float64 {
+func MidPoint(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2102,7 +2102,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MidPrice(high, low []float64, timePeriod int32) []float64 {
+func MidPrice(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2125,7 +2125,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Min(real []float64, timePeriod int32) []float64 {
+func Min(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2148,10 +2148,10 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MinIndex(real []float64, timePeriod int32) []int32 {
+func MinIndex(real []float64, timePeriod int) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outInteger := make([]int32, len(real))
+	outInteger := make([]int, len(real))
 	C.TA_MININDEX(0, C.int(len(real)-1), (*C.double)(unsafe.Pointer(&real[0])), C.int(timePeriod), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outInteger[0])))
 	return outInteger[:outNBElement]
 }
@@ -2171,7 +2171,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MinMax(real []float64, timePeriod int32) ([]float64, []float64) {
+func MinMax(real []float64, timePeriod int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMin := make([]float64, len(real))
@@ -2195,11 +2195,11 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func MinMaxIndex(real []float64, timePeriod int32) ([]int32, []int32) {
+func MinMaxIndex(real []float64, timePeriod int) ([]int, []int) {
 	var outBegIdx C.int
 	var outNBElement C.int
-	outMinIdx := make([]int32, len(real))
-	outMaxIdx := make([]int32, len(real))
+	outMinIdx := make([]int, len(real))
+	outMaxIdx := make([]int, len(real))
 	C.TA_MINMAXINDEX(0, C.int(len(real)-1), (*C.double)(unsafe.Pointer(&real[0])), C.int(timePeriod), &outBegIdx, &outNBElement, (*C.int)(unsafe.Pointer(&outMinIdx[0])), (*C.int)(unsafe.Pointer(&outMaxIdx[0])))
 	return outMinIdx[:outNBElement], outMaxIdx[:outNBElement]
 }
@@ -2219,7 +2219,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func MinusDi(high, low, close []float64, timePeriod int32) []float64 {
+func MinusDi(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2242,7 +2242,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func MinusDm(high, low []float64, timePeriod int32) []float64 {
+func MinusDm(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2265,7 +2265,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Mom(real []float64, timePeriod int32) []float64 {
+func Mom(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2303,7 +2303,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Natr(high, low, close []float64, timePeriod int32) []float64 {
+func Natr(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2341,7 +2341,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func PlusDi(high, low, close []float64, timePeriod int32) []float64 {
+func PlusDi(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2364,7 +2364,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func PlusDm(high, low []float64, timePeriod int32) []float64 {
+func PlusDm(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2395,7 +2395,7 @@ optInMAType:
 Type of Moving Average
 
 */
-func Ppo(real []float64, fastPeriod, slowPeriod, mAType int32) []float64 {
+func Ppo(real []float64, fastPeriod, slowPeriod, mAType int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2418,7 +2418,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Roc(real []float64, timePeriod int32) []float64 {
+func Roc(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2441,7 +2441,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Rocp(real []float64, timePeriod int32) []float64 {
+func Rocp(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2464,7 +2464,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Rocr(real []float64, timePeriod int32) []float64 {
+func Rocr(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2487,7 +2487,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Rocr100(real []float64, timePeriod int32) []float64 {
+func Rocr100(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2510,7 +2510,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Rsi(real []float64, timePeriod int32) []float64 {
+func Rsi(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2641,7 +2641,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Sma(real []float64, timePeriod int32) []float64 {
+func Sma(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2683,7 +2683,7 @@ optInNbDev:(From TA_REAL_MIN to TA_REAL_MAX)
 Nb of deviations
 
 */
-func StdDev(real []float64, timePeriod int32, nbDev float64) []float64 {
+func StdDev(real []float64, timePeriod int, nbDev float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2722,7 +2722,7 @@ optInSlowD_MAType:
 Type of Moving Average for Slow-D
 
 */
-func Stoch(high, low, close []float64, fastKPeriod, slowKPeriod, slowKMAType, slowDPeriod, slowDMAType int32) ([]float64, []float64) {
+func Stoch(high, low, close []float64, fastKPeriod, slowKPeriod, slowKMAType, slowDPeriod, slowDMAType int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outSlowK := make([]float64, len(high))
@@ -2754,7 +2754,7 @@ optInFastD_MAType:
 Type of Moving Average for Fast-D
 
 */
-func Stochf(high, low, close []float64, fastKPeriod, fastDPeriod, fastDMAType int32) ([]float64, []float64) {
+func Stochf(high, low, close []float64, fastKPeriod, fastDPeriod, fastDMAType int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outFastK := make([]float64, len(high))
@@ -2790,7 +2790,7 @@ optInFastD_MAType:
 Type of Moving Average for Fast-D
 
 */
-func StochRsi(real []float64, timePeriod, fastKPeriod, fastDPeriod, fastDMAType int32) ([]float64, []float64) {
+func StochRsi(real []float64, timePeriod, fastKPeriod, fastDPeriod, fastDMAType int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outFastK := make([]float64, len(real))
@@ -2829,7 +2829,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Sum(real []float64, timePeriod int32) []float64 {
+func Sum(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2856,7 +2856,7 @@ optInVFactor:(From 0 to 1)
 Volume Factor
 
 */
-func T3(real []float64, timePeriod int32, vFactor float64) []float64 {
+func T3(real []float64, timePeriod int, vFactor float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2909,7 +2909,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Tema(real []float64, timePeriod int32) []float64 {
+func Tema(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2947,7 +2947,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func TriMa(real []float64, timePeriod int32) []float64 {
+func TriMa(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2970,7 +2970,7 @@ optInTimePeriod:(From 1 to 100000)
 Number of period
 
 */
-func Trix(real []float64, timePeriod int32) []float64 {
+func Trix(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2993,7 +2993,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Tsf(real []float64, timePeriod int32) []float64 {
+func Tsf(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -3039,7 +3039,7 @@ optInTimePeriod3:(From 1 to 100000)
 Number of bars for 3rd period
 
 */
-func UltOsc(high, low, close []float64, timePeriod1, timePeriod2, timePeriod3 int32) []float64 {
+func UltOsc(high, low, close []float64, timePeriod1, timePeriod2, timePeriod3 int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -3066,7 +3066,7 @@ optInNbDev:(From TA_REAL_MIN to TA_REAL_MAX)
 Nb of deviations
 
 */
-func Var(real []float64, timePeriod int32, nbDev float64) []float64 {
+func Var(real []float64, timePeriod int, nbDev float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -3104,7 +3104,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Willr(high, low, close []float64, timePeriod int32) []float64 {
+func Willr(high, low, close []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -3127,7 +3127,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Wma(real []float64, timePeriod int32) []float64 {
+func Wma(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
