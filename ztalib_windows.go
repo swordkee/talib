@@ -984,7 +984,7 @@ func CdlinNeck(inOpen []float64, inHigh []float64, inLow []float64, inClose []fl
  * Output = int
  *
  */
-func CdlinvertedHammer(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
+func CdlInvertedHammer(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
 	var outBegIdx int
 	var outNBElement int
 	n := len(inOpen)
@@ -1052,7 +1052,7 @@ func CdlLadderBottom(inOpen []float64, inHigh []float64, inLow []float64, inClos
  * Output = int
  *
  */
-func CdlLOngLeggedDoji(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
+func CdlLongLeggedDoji(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
 	var outBegIdx int
 	var outNBElement int
 	n := len(inOpen)
@@ -1069,7 +1069,7 @@ func CdlLOngLeggedDoji(inOpen []float64, inHigh []float64, inLow []float64, inCl
  * Output = int
  *
  */
-func CdlLOngLine(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
+func CdlLongLine(inOpen []float64, inHigh []float64, inLow []float64, inClose []float64) (outInteger []int) {
 	var outBegIdx int
 	var outNBElement int
 	n := len(inOpen)

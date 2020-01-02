@@ -558,7 +558,7 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlClosingMarubozu(open, high, low, close []float64) []int {
+func CdlCloSingMarubozu(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -656,7 +656,7 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlDragonflyDoji(open, high, low, close []float64) []int {
+func CdlDragOnflyDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -747,7 +747,7 @@ Input = Open, High, Low, Close
 Output = int
 
 */
-func CdlGravestoneDoji(open, high, low, close []float64) []int {
+func CdlGravestOneDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
